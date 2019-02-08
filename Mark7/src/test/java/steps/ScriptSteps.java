@@ -43,8 +43,6 @@ public class ScriptSteps {
 	@Test
 	public void efetuarLogin() {
 		
-		String msg =  lp.validarMensagemUsuarioNaoEncontrado();
-
 		lp.preencherEmail("batistinha@gmail.com");
 		lp.preencherSenhal("bat2019");
 		lp.clicarLogin();
@@ -52,22 +50,24 @@ public class ScriptSteps {
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		System.out.println( lp.validarMensagemUsuarioNaoEncontrado());
-		Assert.assertEquals("Usuário não cadastrado.", lp.validarMensagemUsuarioNaoEncontrado());
-//		
-//		if (msg=="Usuário não cadastrado.") {
-//			
-//		}
-
+		if (lp.validarMensagemUsuarioNaoEncontrado() == "Usuário não cadastrado.") {
+			System.out.println("Entrou if");
+			
+			lp.clicarCadastro();
+			cp.preencherEmail("batistinha@gmail.com");
+			cp.preencherNome("Batistinha");
+			cp.preencherSenha("bat2019");
+			cp.clicarBotaoCadastrar();			
+		}
+		System.out.println("Entrou else");
 	}
-
-	@After
-	public void fecharNavegador() {
-		driver.quit();
-	}
+//
+//	@After
+//	public void fecharNavegador() {
+//		driver.quit();
+//	}
 
 }

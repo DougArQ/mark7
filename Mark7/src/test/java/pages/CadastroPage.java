@@ -24,21 +24,30 @@ public class CadastroPage {
 
 	@FindBy(xpath = "//button[@type='submit']")
 	WebElement btnCadastrar;
-
-	public WebElement regNome() {
-		return regNome;
+	
+	public CadastroPage preencherNome(String nome) {
+		regNome.sendKeys(nome);
+		
+		return this;
+	}
+	
+	public CadastroPage preencherEmail(String email) {
+		regEmail.sendKeys(email);
+		
+		return this;
+	}
+	
+	public CadastroPage preencherSenha(String senha) {
+		regSenha.sendKeys(senha);
+		
+		return this;
+	}
+	
+	public CadastroPage clicarBotaoCadastrar() {
+		btnCadastrar.click();
+		
+		return this;
 	}
 
-	public WebElement regEmail() {
-		return regEmail;
-	}
-
-	public WebElement regSenha() {
-		return regSenha;
-	}
-
-	public WebElement btnCadastrar() {
-		return btnCadastrar;
-	}
 
 }
