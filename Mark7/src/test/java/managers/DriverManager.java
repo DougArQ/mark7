@@ -10,15 +10,15 @@ public class DriverManager {
 	public WebDriver selectBrowser(String browser) {
 
 		if (browser.equalsIgnoreCase("Chrome")) {
-			System.setProperty("webdriver.chrome.driver", "C:\\Users\\dougl\\drivers\\chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", "C:\\webdrivers\\chromedriver.exe");
 			return new ChromeDriver();
 		}
 		if (browser.equalsIgnoreCase("Firefox")) {
-			System.setProperty("webdriver.gecko.driver", "C:\\Users\\dougl\\drivers\\geckodriver.exe");
+			System.setProperty("webdriver.gecko.driver", "C:\\webdrivers\\geckodriver.exe");
 			return new FirefoxDriver();
 		}
 		if (browser.equalsIgnoreCase("IE")) {
-			System.setProperty("webdriver.ie.driver", "C:\\Users\\dougl\\drivers\\IEDriverServer.exe");
+			System.setProperty("webdriver.ie.driver", "C:\\webdrivers\\IEDriverServer.exe");
 			return new InternetExplorerDriver();
 		}
 		return null;

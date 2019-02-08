@@ -1,10 +1,9 @@
 package steps;
 
-import org.junit.Before;
-import org.junit.Test;
 import org.junit.After;
 import org.junit.Assert;
-import org.openqa.selenium.By;
+import org.junit.Before;
+import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 
 import managers.DriverManager;
@@ -59,10 +58,10 @@ public class ScriptSteps {
 		
 		System.out.println( lp.validarMensagemUsuarioNaoEncontrado());
 		Assert.assertEquals("Usuário não cadastrado.", lp.validarMensagemUsuarioNaoEncontrado());
-		
-		if (msg=="Usuário não cadastrado.") {
-			
-		}
+//		
+//		if (msg=="Usuário não cadastrado.") {
+//			
+//		}
 
 	}
 
