@@ -69,7 +69,6 @@ public class ScriptSteps {
 	public void cadastrarTarefas() {
 		
 		task.clicarNovaTarefa();
-		novaTarefa.
 		
 	}
 //
