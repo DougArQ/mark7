@@ -1,68 +1,76 @@
 package steps;
 
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebDriver;
 
 import managers.DriverManager;
 import pages.CadastroPage;
+import pages.InsertTaskPage;
 import pages.LoginPage;
+import pages.TasksPage;
 
+//Ordenando por ordem alfabética a execução
+//@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ScriptSteps {
 
 	WebDriver driver;
 	DriverManager dm = new DriverManager();
-	LoginPage lp;
-	CadastroPage cp;
+	LoginPage login;
+	CadastroPage cadastro;
+	TasksPage task;
+	InsertTaskPage novaTarefa;
 
 	@Before
 	public void conectar() {
 		driver = dm.selectBrowser("chrome");
-		lp = new LoginPage(driver);
-		cp = new CadastroPage(driver);
+		login = new LoginPage(driver);
+		cadastro = new CadastroPage(driver);
+		task = new TasksPage(driver);
+		novaTarefa = new InsertTaskPage(driver);
+		
 		driver.get("http://mark7.herokuapp.com/login");
 
 	}
 
-//		@Test
-//		 public void efetuarCadastro(String nome, String email, String senha) {
-//			
-//			nome = "Carlos Batista";
-//			email = "batistinha@gmail.com";
-//			senha = "bat2019";
-//			 cp.regNome().sendKeys(nome);
-//			 cp.regEmail().sendKeys(email);
-//			 cp.regSenha().sendKeys(senha);
-//			 cp.btnCadastrar().click();
-//			 	  
-//			  			  
-//			 }
+//	@Test
+//	public void efetuarCadastro() {
+//
+//		login.clicarCadastro();
+//		cadastro.preencherEmail("batistinha@gmail.com");
+//		cadastro.preencherNome("Batistinha");
+//		cadastro.preencherSenha("bat2019");
+//		cadastro.clicarBotaoCadastrar();
+//
+//		Assert.assertEquals(task.validaUsuarioLogado(), "batistinha@gmail.com");
+//	}
 
 	@Test
 	public void efetuarLogin() {
-		
-		lp.preencherEmail("batistinha@gmail.com");
-		lp.preencherSenhal("bat2019");
-		lp.clicarLogin();
+
+		login.preencherEmail("batistinha@gmail.com");
+		login.preencherSenhal("bat2019");
+		login.clicarLogin();
 		
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+
+		Assert.assertEquals(task.validaUsuarioLogado(), "batistinha@gmail.com");
+
+	}
+	
+	@Test
+	public void cadastrarTarefas() {
 		
-		if (lp.validarMensagemUsuarioNaoEncontrado() == "Usuário não cadastrado.") {
-			System.out.println("Entrou if");
-			
-			lp.clicarCadastro();
-			cp.preencherEmail("batistinha@gmail.com");
-			cp.preencherNome("Batistinha");
-			cp.preencherSenha("bat2019");
-			cp.clicarBotaoCadastrar();			
-		}
-		System.out.println("Entrou else");
+		task.clicarNovaTarefa();
+		novaTarefa.
+		
 	}
 //
 //	@After

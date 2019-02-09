@@ -22,7 +22,7 @@ public class LoginPage {
 	@FindBy(xpath = "//button[@class='btn btn-accent loginButton']")
 	WebElement btnLogin;
 
-	@FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[3]/div[1]/form[1]/div[3]/a")
+	@FindBy(linkText = "Clique aqui")
 	WebElement btnCliqueAqui;
 
 	@FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[3]/div[1]/form[1]/div[1]/div[1]/div[1]/div[1]")
