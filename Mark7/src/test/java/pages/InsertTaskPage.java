@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,8 +20,11 @@ public class InsertTaskPage {
 
 	@FindBy(id = "dueDate")
 	WebElement campoData;
-
-	@FindBy(xpath = "//div[@class='bootstrap-tagsinput form-control']")
+	
+	@FindBy(xpath = "//div[@class='bootstrap-tagsinput form-control']//input[@type='text']")
+	WebElement campoTagsClick;
+	
+	@FindBy(xpath = "//div[@class='bootstrap-tagsinput form-control focus']//input[@type='text']")
 	WebElement campoTags;
 
 	@FindBy(id = "form-submit-button")
@@ -29,7 +33,9 @@ public class InsertTaskPage {
 	@FindBy(linkText = "Voltar")
 	WebElement btnVoltar;
 
-	public InsertTaskPage preencherCampoTags() {
+	public InsertTaskPage preencherCampoTags() throws InterruptedException {
+		Thread.sleep(2000);
+		campoTagsClick.click();
 		campoTags.sendKeys("dog");
 		campoTags.sendKeys(Keys.TAB);
 		return this;

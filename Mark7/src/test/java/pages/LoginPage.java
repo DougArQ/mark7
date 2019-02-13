@@ -55,5 +55,13 @@ public class LoginPage {
 		
 		return this;
 	}
+	
+	public LoginPage realizarLogin(String email, String senha) {
+		txtEmail.sendKeys(email);
+		txtSenha.sendKeys(senha);
+		btnLogin.click();
+		
+		return this;		
+	}
 
 }

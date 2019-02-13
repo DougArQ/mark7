@@ -47,45 +47,46 @@ public class ScriptSteps {
 //		Assert.assertEquals(task.validaUsuarioLogado(), "batistinha@gmail.com");
 //	}
 
-	@Test
-	public void efetuarLogin() throws InterruptedException {
-
-		login.preencherEmail("teste123@gmail.com");
-		login.preencherSenhal("teste123");
-		login.clicarLogin();
-
-		Thread.sleep(2000);
-
+//	@Test
+//	public void efetuarLogin() throws InterruptedException {
 //
-//		if (login.validarMensagemUsuarioNaoEncontrado().equalsIgnoreCase("Usuário não cadastrado.")) {
-//			login.clicarCadastro();
-//			cadastro.preencherEmail("teste123@gmail.com");
-//			cadastro.preencherNome("Teste");
-//			cadastro.preencherSenha("teste123");
-//			cadastro.clicarBotaoCadastrar();
-//			
-//			try {
-//				Thread.sleep(2000);
-//			} catch (InterruptedException e) {
-//				e.printStackTrace();
-//			}
-//	
-//			Assert.assertEquals(task.validaUsuarioLogado(), "teste123@gmail.com");
-//		}
+//		login.preencherEmail("teste123@gmail.com");
+//		login.preencherSenhal("teste123");
+//		login.clicarLogin();
+//
+//		Thread.sleep(2000);
+//
+////
+////		if (login.validarMensagemUsuarioNaoEncontrado().equalsIgnoreCase("Usuário não cadastrado.")) {
+////			login.clicarCadastro();
+////			cadastro.preencherEmail("teste123@gmail.com");
+////			cadastro.preencherNome("Teste");
+////			cadastro.preencherSenha("teste123");
+////			cadastro.clicarBotaoCadastrar();
+////			
+////			try {
+////				Thread.sleep(2000);
+////			} catch (InterruptedException e) {
+////				e.printStackTrace();
+////			}
+////	
+////			Assert.assertEquals(task.validaUsuarioLogado(), "teste123@gmail.com");
+////		}
+//
+//		Assert.assertEquals(task.validaUsuarioLogado(), "teste123@gmail.com");
+//
+//	}
 
-		Assert.assertEquals(task.validaUsuarioLogado(), "teste123@gmail.com");
-
+	@Test
+	public void cadastrarTarefas() throws InterruptedException {
+		login.realizarLogin("teste123@gmail.com", "teste123");
+		
+		Thread.sleep(2000);
+		
 		task.clicarNovaTarefa();
 		novaTarefa.preencherCampoTags();
-
+		
 	}
-
-//	@Test
-//	public void cadastrarTarefas() {
-//		
-//		
-//		
-//	}
 
 //	@After
 //	public void fecharNavegador() {
