@@ -1,10 +1,9 @@
 package steps;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.FixMethodOrder;
 import org.junit.Test;
-import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebDriver;
 
 import managers.DriverManager;
@@ -31,7 +30,7 @@ public class ScriptSteps {
 		cadastro = new CadastroPage(driver);
 		task = new TasksPage(driver);
 		novaTarefa = new InsertTaskPage(driver);
-		
+
 		driver.get("http://mark7.herokuapp.com/login");
 
 	}
@@ -49,29 +48,45 @@ public class ScriptSteps {
 //	}
 
 	@Test
-	public void efetuarLogin() {
+	public void efetuarLogin() throws InterruptedException {
 
-		login.preencherEmail("batistinha@gmail.com");
-		login.preencherSenhal("bat2019");
+		login.preencherEmail("teste123@gmail.com");
+		login.preencherSenhal("teste123");
 		login.clicarLogin();
-		
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 
-		Assert.assertEquals(task.validaUsuarioLogado(), "batistinha@gmail.com");
+		Thread.sleep(2000);
 
-	}
-	
-	@Test
-	public void cadastrarTarefas() {
-		
-		task.clicarNovaTarefa();
-		
-	}
 //
+//		if (login.validarMensagemUsuarioNaoEncontrado().equalsIgnoreCase("Usuário não cadastrado.")) {
+//			login.clicarCadastro();
+//			cadastro.preencherEmail("teste123@gmail.com");
+//			cadastro.preencherNome("Teste");
+//			cadastro.preencherSenha("teste123");
+//			cadastro.clicarBotaoCadastrar();
+//			
+//			try {
+//				Thread.sleep(2000);
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
+//	
+//			Assert.assertEquals(task.validaUsuarioLogado(), "teste123@gmail.com");
+//		}
+
+		Assert.assertEquals(task.validaUsuarioLogado(), "teste123@gmail.com");
+
+		task.clicarNovaTarefa();
+		novaTarefa.preencherCampoTags();
+
+	}
+
+//	@Test
+//	public void cadastrarTarefas() {
+//		
+//		
+//		
+//	}
+
 //	@After
 //	public void fecharNavegador() {
 //		driver.quit();
