@@ -83,8 +83,9 @@ public class ScriptSteps {
 		
 		Thread.sleep(2000);
 		
-		task.clicarNovaTarefa();
-		novaTarefa.preencherCampoTags();
+//		task.clicarNovaTarefa();
+//		novaTarefa.cadastrarNovaTarefa();
+		task.clicarBuscarTarefa("livro");
 		
 	}
 
