@@ -25,6 +25,15 @@ public class TasksPage {
 	@FindBy(id="search-button")
 	WebElement btnBuscar;
 	
+	@FindBy(id="delete-button")
+	WebElement btnDelete;
+	
+	@FindBy(xpath="//button[contains(text(),'Sim')]")
+	WebElement btnConfirmarExclusao;
+	
+	@FindBy(xpath="//div[contains(text(),'nenhuma tarefa cadastrada :|')]")
+	WebElement msgNenhumaTarefaCadastrada;
+	
 	public String validaUsuarioLogado() {
 		String email = emailLogado.getText();
 		return email;
@@ -35,10 +44,26 @@ public class TasksPage {
 		return this;
 	}
 	
-	public String clicarBuscarTarefa(String tarefa) {
+	public String clicarBuscarTarefa(String tarefa) throws InterruptedException {
+		Thread.sleep(2000);
 		campoBuscar.sendKeys(tarefa);
 		btnBuscar.click();		
 		return tarefa;
+	}
+	
+	public TasksPage removerTask() throws InterruptedException {
+		btnDelete.click();
+		Thread.sleep(2000);
+		
+		btnConfirmarExclusao.click();
+		return this;
+	}
+	
+	public String validaMsgNenhumaTarefaCadastrada() {
+		
+		String msg = msgNenhumaTarefaCadastrada.getText();
+		return msg;
+		
 	}
 
 }

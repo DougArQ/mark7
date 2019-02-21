@@ -32,60 +32,66 @@ public class ScriptSteps {
 		novaTarefa = new InsertTaskPage(driver);
 
 		driver.get("http://mark7.herokuapp.com/login");
-
 	}
 
 //	@Test
-//	public void efetuarCadastro() {
+//	public void realizarCadastroUsuario() {
 //
 //		login.clicarCadastro();
-//		cadastro.preencherEmail("batistinha@gmail.com");
-//		cadastro.preencherNome("Batistinha");
-//		cadastro.preencherSenha("bat2019");
-//		cadastro.clicarBotaoCadastrar();
-//
+//		cadastro.realizarCadastroUsuario("batistinha@gmail.com", "Batistinha", "bat2019");
 //		Assert.assertEquals(task.validaUsuarioLogado(), "batistinha@gmail.com");
 //	}
-
+//
 //	@Test
 //	public void efetuarLogin() throws InterruptedException {
 //
-//		login.preencherEmail("teste123@gmail.com");
-//		login.preencherSenhal("teste123");
-//		login.clicarLogin();
-//
+//		login.realizarLogin("teste123@gmail.com", "teste123");
+//		
 //		Thread.sleep(2000);
 //
-////
-////		if (login.validarMensagemUsuarioNaoEncontrado().equalsIgnoreCase("Usuário não cadastrado.")) {
-////			login.clicarCadastro();
-////			cadastro.preencherEmail("teste123@gmail.com");
-////			cadastro.preencherNome("Teste");
-////			cadastro.preencherSenha("teste123");
-////			cadastro.clicarBotaoCadastrar();
-////			
-////			try {
-////				Thread.sleep(2000);
-////			} catch (InterruptedException e) {
-////				e.printStackTrace();
-////			}
-////	
-////			Assert.assertEquals(task.validaUsuarioLogado(), "teste123@gmail.com");
-////		}
+//		if (login.validarMensagemUsuarioNaoEncontrado().equalsIgnoreCase("Usuário não cadastrado.")) {
+//			login.clicarCadastro();
+//			
+//			cadastro.realizarCadastroUsuario("batistinha@gmail.com", "Batistinha", "bat2019");
+//			try {
+//				Thread.sleep(2000);
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
+//			Assert.assertEquals(task.validaUsuarioLogado(), "batistinha@gmail.com");
+//		}
 //
-//		Assert.assertEquals(task.validaUsuarioLogado(), "teste123@gmail.com");
+//		Assert.assertEquals(task.validaUsuarioLogado(), "batistinha@gmail.com");
 //
 //	}
-
+//
+//	@Test
+//	public void cadastrarTarefas() throws InterruptedException {
+//		login.realizarLogin("teste123@gmail.com", "teste123");
+//		
+//		Thread.sleep(2000);
+//		
+//		task.clicarNovaTarefa();
+//		novaTarefa.cadastrarNovaTarefa();
+//		task.clicarBuscarTarefa("livro");
+//		
+//	}
+	
 	@Test
-	public void cadastrarTarefas() throws InterruptedException {
+	public void removerTask() throws InterruptedException {
+		
 		login.realizarLogin("teste123@gmail.com", "teste123");
 		
 		Thread.sleep(2000);
 		
-//		task.clicarNovaTarefa();
-//		novaTarefa.cadastrarNovaTarefa();
-		task.clicarBuscarTarefa("livro");
+		task.clicarNovaTarefa();
+		novaTarefa.cadastrarNovaTarefa();
+		
+		task.clicarBuscarTarefa("Livro de Animais");
+		task.removerTask();
+		task.clicarBuscarTarefa("Livro de Animais");
+		
+		Assert.assertEquals("nenhuma tarefa cadastrada :|", task.validaMsgNenhumaTarefaCadastrada());
 		
 	}
 

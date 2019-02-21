@@ -1,6 +1,5 @@
 package pages;
 
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -28,21 +27,6 @@ public class LoginPage {
 
 	@FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[3]/div[1]/form[1]/div[1]/div[1]/div[1]/div[1]")
 	WebElement msgErro;
-
-	public LoginPage preencherEmail(String email) {
-		txtEmail.sendKeys(email);
-		return this;
-	}
-
-	public LoginPage preencherSenhal(String senha) {
-		txtSenha.sendKeys(senha);
-		return this;
-	}
-
-	public LoginPage clicarLogin() {
-		btnLogin.click();
-		return this;
-	}
 
 	public String validarMensagemUsuarioNaoEncontrado() {
 		String mensagem = msgErro.getText();

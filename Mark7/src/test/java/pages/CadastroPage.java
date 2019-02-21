@@ -25,25 +25,10 @@ public class CadastroPage {
 	@FindBy(xpath = "//button[@type='submit']")
 	WebElement btnCadastrar;
 	
-	public CadastroPage preencherNome(String nome) {
+	public CadastroPage realizarCadastroUsuario (String email, String nome, String senha) {
 		regNome.sendKeys(nome);
-		
-		return this;
-	}
-	
-	public CadastroPage preencherEmail(String email) {
 		regEmail.sendKeys(email);
-		
-		return this;
-	}
-	
-	public CadastroPage preencherSenha(String senha) {
 		regSenha.sendKeys(senha);
-		
-		return this;
-	}
-	
-	public CadastroPage clicarBotaoCadastrar() {
 		btnCadastrar.click();
 		
 		return this;
