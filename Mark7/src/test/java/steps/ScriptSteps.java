@@ -72,8 +72,8 @@ public class ScriptSteps {
 //		Thread.sleep(2000);
 //		
 //		task.clicarNovaTarefa();
-//		novaTarefa.cadastrarNovaTarefa();
-//		task.clicarBuscarTarefa("livro");
+//		novaTarefa.cadastrarNovaTarefa("Livro de Animais", "20/01/2019", "Dog", "Cat", "Fox");
+//		task.clicarBuscarTarefa("Livro de Animais");
 //		
 //	}
 	
@@ -85,7 +85,7 @@ public class ScriptSteps {
 		Thread.sleep(2000);
 		
 		task.clicarNovaTarefa();
-		novaTarefa.cadastrarNovaTarefa();
+		novaTarefa.cadastrarNovaTarefa("Livro de Animais", "20/01/2019", "Dog", "Cat", "Fox");
 		
 		task.clicarBuscarTarefa("Livro de Animais");
 		task.removerTask();

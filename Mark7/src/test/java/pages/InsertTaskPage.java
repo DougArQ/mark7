@@ -32,21 +32,21 @@ public class InsertTaskPage {
 	@FindBy(linkText = "Voltar")
 	WebElement btnVoltar;
 
-	public InsertTaskPage cadastrarNovaTarefa() throws InterruptedException {
+	public InsertTaskPage cadastrarNovaTarefa(String nomeLivro, String data, String tagUm, String tagDois, String tagTres ) throws InterruptedException {
 		Thread.sleep(2000);
-		campoNome.sendKeys("Livro de Animais");
-		campoData.sendKeys("20/01/2019");
+		campoNome.sendKeys(nomeLivro);
+		campoData.sendKeys(data);
 		
 		campoTagsClick.click();
-		campoTags.sendKeys("dog");
+		campoTags.sendKeys(tagUm);
 		campoTags.sendKeys(Keys.TAB);
 		
 		campoTagsClick.click();
-		campoTags.sendKeys("cat");
+		campoTags.sendKeys(tagDois);
 		campoTags.sendKeys(Keys.TAB);
 		
 		campoTagsClick.click();
-		campoTags.sendKeys("raposa");
+		campoTags.sendKeys(tagTres);
 		campoTags.sendKeys(Keys.TAB);
 		
 		btnCadastrar.click();
