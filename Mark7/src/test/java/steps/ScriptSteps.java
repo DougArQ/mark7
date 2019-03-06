@@ -1,9 +1,11 @@
 package steps;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 
+import managers.DAO;
 import managers.DriverManager;
 import pages.CadastroPage;
 import pages.InsertTaskPage;
@@ -22,6 +24,7 @@ public class ScriptSteps {
 	TasksPage task;
 	InsertTaskPage novaTarefa;
 	PerfilPage novoPerfil;
+	DAO dao;
 
 	@Before
 	public void conectar() {
@@ -31,17 +34,24 @@ public class ScriptSteps {
 		task = new TasksPage(driver);
 		novaTarefa = new InsertTaskPage(driver);
 		novoPerfil = new PerfilPage(driver);
+		dao = new DAO();
 
 		driver.get("http://mark7.herokuapp.com/login");
 	}
 
-//	@Test
-//	public void realizarCadastroUsuario() {
-//
-//		login.clicarCadastro();
-//		cadastro.realizarCadastroUsuario("batistinha@gmail.com", "Batistinha", "bat2019");
-//		Assert.assertEquals(task.validaUsuarioLogado(), "batistinha@gmail.com");
-//	}
+	@Test
+	public void realizarCadastroUsuario() {
+
+		//Removendo usuario via API
+//		driver.get("http://mark7.herokuapp.com/api/reset/batistinha@gmail.com?clean=full");
+		
+		//Removendo usuario via MongoDB
+		dao.removerUsuario("batistinha@gmail.com");
+		
+		login.clicarCadastro();
+		cadastro.realizarCadastroUsuario("batistinha@gmail.com", "Batistinha", "bat2019");
+		Assert.assertEquals(task.validaUsuarioLogado(), "batistinha@gmail.com");
+	}
 //
 //	@Test
 //	public void efetuarLogin() throws InterruptedException {
@@ -96,19 +106,19 @@ public class ScriptSteps {
 //		
 //	}
 	
-	@Test
-	public void atualizarPerfil () throws InterruptedException {
-		login.realizarLogin("teste123@gmail.com", "teste123");
-		
-		Thread.sleep(2000);
-		
-		novoPerfil.clicaLinkPerfil();
-		
-		Thread.sleep(2000);
-		
-		novoPerfil.atualizaPerfil("Pedro Cardozo", "pedrao@prefeitura.com", "Prefeitura de Araraquara");
-		System.out.println(novoPerfil.validaMsgPerfilAtualizado());
-		}
+//	@Test
+//	public void atualizarPerfil () throws InterruptedException {
+//		login.realizarLogin("teste123@gmail.com", "teste123");
+//		
+//		Thread.sleep(2000);
+//		
+//		novoPerfil.clicaLinkPerfil();
+//		
+//		Thread.sleep(2000);
+//		
+//		novoPerfil.atualizaPerfil("Pedro Cardozo", "pedrao@prefeitura.com", "Prefeitura de Araraquara");
+//		System.out.println(novoPerfil.validaMsgPerfilAtualizado());
+//		}
 
 //	@After
 //	public void fecharNavegador() {
