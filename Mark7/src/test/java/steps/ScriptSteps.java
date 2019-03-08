@@ -62,7 +62,7 @@ public class ScriptSteps {
 		Assert.assertEquals(task.validaUsuarioLogado(), "batistinha@gmail.com");
 		
         //Salvando Screenshot
-        String screenshotArquivo = "C:\\Users\\msouza7\\OneDrive\\Estudostest-report\\taskit\\" + Generator.dataHoraParaArquivo()+"_"+test.getMethodName()+".png";
+        String screenshotArquivo = "C:\\Selenium_ScreenShot\\taskit\\" + Generator.dataHoraParaArquivo()+"_"+test.getMethodName()+".png";
         Screenshot.tirar(driver,screenshotArquivo );
 	}
 
